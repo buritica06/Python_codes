@@ -1,0 +1,60 @@
+'''
+Introduction to pandas
+
+it's library that allow us read write data,
+indexing,logic,subsetting, adjust and structure data
+and also  we can read html tables
+
+'''
+
+import pandas as pd
+import numpy as np
+
+#Series with pandas
+
+#help(pd.Series) Para saber toda la documentación
+
+myindex = ['USA','Canada','Mexico']
+mydata = [1776,1867,1821]
+myser = pd.Series(data=mydata,index = myindex)
+print(myser)
+
+print("  ")
+print("  ")
+print("  ")
+
+ages = {'Sam':5,'Frank':10,'Spike':7} #Dictionary
+print(pd.Series(ages))
+
+print("  ")
+print("  ")
+print("  ")
+
+#Series Part Two
+
+#Imaginery sales data for 1st and 2nd Quarters for Global Company
+q1 ={'Japan':80,'China':450, 'India':200,'USA':250}
+q2 = {'Brazil':100,'China':500,'India':210,'USA':260}
+print("           ")
+sales_q1 = pd.Series(q1)
+sales_q2 = pd.Series(q2)
+
+print(sales_q1)
+print("           ")
+print(sales_q2)
+
+#The key in this case is Japan has to equal
+#If this change we will have an error
+print(sales_q1['Japan']) 
+print("           ||")
+print(sales_q1.keys())
+
+print(sales_q1*2) #We can do this numpy arrays too
+print("  ")
+print(sales_q2 + sales_q1)
+print(sales_q1.add(sales_q2,fill_value=0)) #dtyp =int
+#Si guardamos las sumatoria de las ventas en una variable
+#cambiaremos el tipo de dato a float64
+primera_parte = sales_q1.add(sales_q2,fill_value=0) #float64
+
+sales_q1.dtype
