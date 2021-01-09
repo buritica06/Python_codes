@@ -1,0 +1,35 @@
+mport pandas as pd 
+import numpy as np
+'''
+#dataframes are severeal series  that share the same index
+#Creating our own data with numpy
+np.random.seed(101)
+mydata=np.random.randint(0,101,(4,3))
+
+print(mydata)
+
+myindex = ['CA','NY','AZ','TX']
+mycolumns= ['Jan','Feb','Mar']
+df = pd.DataFrame(data = mydata, index = myindex,columns=mycolumns)
+
+print(df)
+
+print(df.info())
+'''
+#La mejor forma de no tener errores en la terminal es, guardar el archivo a leer
+#En el mismo script
+df_2  = pd.read_csv(r"C:\AppData\Local\Programs\Python\Python39\Proyectos\tips.csv")
+
+print(df_2) #Como está organizada la data
+print("        ")
+print(df_2.columns) #info
+print("        ")
+print(df_2.index)
+print("        ")
+print(df_2.head(10)) #10 primeros valores de la tabla
+print("        ")
+print(df_2.tail()) #Valores finales de la tabla
+print("        ")
+print(df_2.info())
+print("        ")
+print(df_2.describe().transpose())
