@@ -40,4 +40,3 @@ print(arr2d.sum(axis=0))
 
 #Suma los elementos de las filas
 print(arr2d.sum(axis=1))
-
