@@ -1,0 +1,30 @@
+from itertools import count
+
+def my_func(name):
+    '''
+    Aqui se imprime el nombre del  usuario que esta programando
+
+    '''
+    print('hello' + name)
+
+my_func(' Ricardo')
+
+def square(x):
+    print(x**2)
+
+result = square(2)
+
+'''
+using .pop we can remove an element from a list  variable.pop
+'''
+
+'''
+def count_dog(st):
+    count1 = 0
+    for word in .stlower().split():
+        if word == 'dog':
+            count1 += 1
+    return count1
+
+'''
+#to run the program , by sections, delete (''')
