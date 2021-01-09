@@ -1,0 +1,52 @@
+import pandas as pd
+import numpy as np
+
+df_2  = pd.read_csv(r"C:\AppData\Local\Programs\Python\Python39\Proyectos\tips.csv")
+
+
+print(df_2['total_bill']) #datatype pandas_series
+print("      ")
+mycols = ['total_bill','tip']
+print(df_2[mycols])
+
+'''
+Tambien podemos hacer lo siguiente en la línea 8
+
+print(df_2[['total_bill','tip']])
+
+Para ahorrarnos la elaboración de una variables
+
+'''
+
+#Añadiendo propina a la cuenta principal
+#podemos usar cualquier operador suma,resta,multi,div
+#podemos hacer también operaciones matematicas
+print(df_2['tip'] + df_2['total_bill'])
+
+print("     ")
+#Calculando el porcentaje de la propina de la cuenta total
+print(100 * (df_2['tip'] / df_2['total_bill']))
+
+#Creating new columns with pandas
+df_2['tip_percentage'] = 100 * (df_2['tip'] / df_2['total_bill'])
+
+print("      ")
+
+print(df_2.head())
+print("     ")
+#if a column exist with an equal
+# name you'll have a an overwrite column
+
+#np.round se usa para disminuir decimales innecesarios
+df_2['price_per_person'] = np.round(df_2['total_bill'] / df_2['size'],2)
+
+print(df_2.head())
+print("        ")
+#axis = 1 , will drop a row
+#axis = 0 , will drop a column
+print(df_2.drop('tip_percentage',axis=1))
+print("        ")
+#do the this in this way cause may we'll trouble 
+df_2 = df_2.drop('tip_percentage',axis=1)
+print("        ")
+print(df_2.shape)
