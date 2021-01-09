@@ -1,0 +1,43 @@
+'''
+Numpy operations
+
+'''
+import numpy as np
+
+arr = np.arange(0,10)
+
+print(arr + 5) #suma cada elemento del array
+
+print(arr - 2)
+
+print(arr + arr)
+
+print (arr*arr)
+
+print(arr-arr)
+#El primer elemento de que se entrega en la consola 
+#de comando entrega un NaN no que significa Non A Number
+#print(arr/arr) 
+
+#Universal Functions
+print(np.sqrt(arr))
+print(np.log(arr)) #It give us a Warning
+print(np.sin(arr))
+
+# Commands that we use commonly in datasets
+print(arr.sum())
+print(arr.mean())
+print(arr.max())
+print(arr.std())
+
+arr2d = np.arange(0,25).reshape(5,5)
+print(arr2d)
+#Suma de todos los elementos pertenecientes a la matriz
+print(arr2d.sum())
+#Suma todos los elementos de cada columna dejandolos
+#Como un array de 1x1
+print(arr2d.sum(axis=0))
+
+#Suma los elementos de las filas
+print(arr2d.sum(axis=1))
+
