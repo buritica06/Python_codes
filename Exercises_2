@@ -1,0 +1,41 @@
+print("My name is {},my number is{}".format('Ricardo','100'))
+
+print("My name is {x},my number is{y}".format(x='xxx',y='yyy'))
+
+#List or arrays
+
+[1,2,3]
+['a','c','d']
+
+mylist = ['a','b','c']
+print(mylist[2])
+
+mylist.append('d')
+
+print(mylist)
+
+#directionaries or hash tables
+#This ones do not have an orden they can be printed randomly
+
+d = {'key1':'value1' , 'key2':'value2'}
+d['key2']
+
+#blinds
+#-- True 1
+#-- False 0
+
+#Typles , can not be reassigned, can not be changed 
+t = (1,2,3)
+
+#Set Unordered of unique elements, even if we repeat the characters during the sequence 
+{1,2,3,4,5}
+
+#Comparison operator python is case sensitive so we have to be careful , it recommend using parathesis
+
+1 > 5
+3 < 2
+3 <= 4
+1 >= 3
+
+#first we use if, elif, else
+
