@@ -1,0 +1,54 @@
+import pandas as pd
+import numpy as np
+
+'''
+Conditional filtering
+
+'''
+#r , to convert the address to string
+df_2  = pd.read_csv(r"C:\Users\AppData\Local\Programs\Python\Python39\Proyectos\\tips.csv")
+
+#Columns has atrributes that are the columns in our dataset
+#Rows are intenses in our dataset
+
+print(df_2.head())
+
+print("            ")
+#Comparison
+#we can print it without variable, return complete data
+bool_series = df_2['total_bill']>40 
+print("            ")
+#If we not assign a variable ,  Give us a true or false, boolean value
+print(df_2[bool_series])
+#doing all in one
+#df_2[df_2['total_bill']>40 ] give us complete data
+print("            ")
+print("            ")
+print("            ")
+#printing all the males in the data frame
+print(df_2[df_2['sex'] == 'Male'])
+
+print("            ")
+print("            ")
+print("            ")
+
+print(df_2[df_2['size'] > 3])
+
+#multiple conditions
+#AND "&"" ---BOTH CONDITIONS MUST BE TRUE
+
+#OR "|" ---- EITHER CONDITION IS TRUE
+print(df_2[(df_2['total_bill'] > 30) & (df_2['sex'] == 'Male')])
+
+print("            ")
+print("            ")
+print("            ")
+
+df_2[(df_2['day']=='Sun') | (df_2['day'] =='Sat') | (df_2['day'] =='Fri') ]
+
+print("            ")
+print("            ")
+print("            ")
+
+options = ['Sat','Sun']
+print(df_2['day'].isin(options))
