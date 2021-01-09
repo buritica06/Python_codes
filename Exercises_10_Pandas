@@ -1,0 +1,45 @@
+import pandas as pd
+import numpy as np
+
+'''
+index and rows
+'''
+df_2  = pd.read_csv(r"C:\Users\rburi\AppData\Local\Programs\Python\Python39\Proyectos\ML_Udemy\tips.csv")
+
+#index shoudl be the primary key
+#index has to be unique also
+print(df_2.index)
+print("     ")
+df_2 = df_2.set_index("Payment ID")
+print("   ")
+print(df_2.head())
+
+#how to reset the index
+#print(df_2.reset_index())
+#in case we wanna change primary key for some anylisis purposes
+
+#It give us information about the first person on the list
+#If we know a position we need to consider
+#using this commmand iloc[pos]
+print(df_2.iloc[0])
+
+print("       ")
+print("       ")
+print("       ")
+print(df_2.iloc[0:4])
+#This command we use it when we know the label, in this case 
+#The payment method sun2959 is unique 
+print("       ")
+print("       ")
+print("       ")
+print(df_2.loc[['Sun2959','Sun5260']])
+
+#If we wanna drop some client , we use the following line of code
+#the change is not permanent
+df_2.drop('Sun2959',axis=0)
+#to do it permanent
+df_2 = df_2.drop('Sun2959',axis=0)
+
+one_row = df_2.iloc[0]
+print(one_row)
+df_2 = df_2.append(one_row)
