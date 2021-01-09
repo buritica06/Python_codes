@@ -1,0 +1,110 @@
+import pandas as pd
+import numpy as np
+
+'''
+
+Useful methods
+
+'''
+df_2  = pd.read_csv(r"C:\AppData\Local\Programs\Python\Python39\Proyectos\tips.csv")
+#Converting int to a string from the  dataset
+def last_four(num):
+    return str(num)[-4:]
+
+print(last_four(123456789))
+print("            ")
+print("            ")
+print("            ")
+
+df_2['last_four'] = df_2['CC Number'].apply(last_four)
+
+print(df_2['CC Number'].apply(last_four))
+
+print("            ")
+print("            ")
+print("            ")
+
+print(df_2['total_bill'].mean())
+
+def  yelp(price):
+  if price < 10:
+      return '$'
+  elif price >= 10 and price < 30:
+        return '$$'
+  else:
+        return '$$$'
+
+df_2['yelp'] = df_2['total_bill'].apply(yelp)
+
+
+print("            ")
+print("            ")
+print("            ")
+
+print(df_2['yelp'])
+
+print("            ")
+print("            ")
+print("            ")
+
+print(df_2)
+
+###################
+#Part Two
+###################
+
+def simple(num):
+    return num*2
+
+lambda num: num*2
+
+print(df_2['total_bill'].apply(lambda num: num*2))
+
+
+print("            ")
+print("            ")
+print("            ")
+
+
+def quality(total_bill,tip):
+    if tip/total_bill  > 0.25:
+        return "Generous"
+    else:
+        return "Other"
+
+df_2['Tip Quality'] = df_2[['total_bill','tip']].apply(lambda df_2: quality(df_2['total_bill'],df_2['tip']),axis=1)
+#using vectorize help us to run the code more faster than line before
+df_2['Tip Quality'] = np.vectorize(quality)(df_2['total_bill'], df_2['tip'])
+
+
+import timeit 
+  
+# code snippet to be executed only once 
+setup = '''
+import numpy as np
+import pandas as pd
+df = pd.read_csv('tips.csv')
+def quality(total_bill,tip):
+    if tip/total_bill  > 0.25:
+        return "Generous"
+    else:
+        return "Other"
+'''
+  
+# code snippet whose execution time is to be measured 
+stmt_one = ''' 
+df['Tip Quality'] = df[['total_bill','tip']].apply(lambda df: quality(df['total_bill'],df['tip']),axis=1)
+'''
+
+stmt_two = '''
+df['Tip Quality'] = np.vectorize(quality)(df['total_bill'], df['tip'])
+'''
+
+print(timeit.timeit(setup = setup, 
+                    stmt = stmt_one, 
+                    number = 1000))
+
+print(timeit.timeit(setup = setup, 
+                    stmt = stmt_two, 
+                    number = 1000) )
+  
